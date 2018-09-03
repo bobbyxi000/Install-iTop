@@ -1,0 +1,9 @@
+#!/bin/bash
+#!/usr/bin/env bash
+rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+yum -y install yum-utils
+yum update
+yum-config-manager --enable remi-php71
+yum -y install php php-opcache
+yum install php php-mysqlnd php-mcrypt php-xml php-cli php-soap php-ldap graphviz
+systemctl restart httpd.service
