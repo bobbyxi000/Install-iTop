@@ -7,6 +7,5 @@ rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-7.rpm
 yum install -y yum-utils
 yum update -y
 yum-config-manager --enable remi-php71
-yum install -y php php-opcache
-yum install -y php php-mysqlnd php-mcrypt php-xml php-cli php-soap php-ldap graphviz
+yum install -y php php-zip php-gd php-mysqlnd php-mcrypt php-xml php-cli php-soap php-ldap graphviz
 systemctl restart httpd.service
