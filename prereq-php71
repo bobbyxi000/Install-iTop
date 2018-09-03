@@ -2,9 +2,9 @@
 #!/usr/bin/env bash
 # wget -O - https://raw.githubusercontent.com/bobbyxi000/Install-iTop/master/prereq-php71 | sudo bash
 rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-7.rpm
-yum install -y install yum-utils
+yum install -y yum-utils
 yum install -y update
 yum-config-manager --enable remi-php71
-yum install -y install php php-opcache
-yum install -y install php php-mysqlnd php-mcrypt php-xml php-cli php-soap php-ldap graphviz
+yum install -y php php-opcache
+yum install -y php php-mysqlnd php-mcrypt php-xml php-cli php-soap php-ldap graphviz
 systemctl restart httpd.service
