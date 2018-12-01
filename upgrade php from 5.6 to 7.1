@@ -1,3 +1,23 @@
+# Back up PHP files
+cd /etc
+cp -r php.d php.d.11272018
+cp php.ini php.ini.11272018
+cp -r php-zts.d php-zts.d.11272018
+cp -r /var/lib/php /var/lib/php.11272018
+cp -r /etc/httpd/conf.d/php.conf /etc/httpd/conf.d/php.conf.11272018
+
+# Get the list of installed php applications
+yum list installed | grep -i remi
+
+# or
+yum list installed php*
+
+# Remove the old version of php
+yum remove php php-cli php-common php-gd php-ldap php-mcrypt php-mysqlnd php-pdo php-pear php-pecl-apcu php-pecl-jsonc php-pecl-zip php-process php-soap php-suhosin php-xml remi-release.noarch -y
+# or
+yum remove php*
+
+# Get remi repo. you can use the repo of your choice.
 wget http://rpms.remirepo.net/enterprise/remi-release-7.rpm
 rpm -Uvh remi-release-7.rpm
 yum install -y yum-utils
@@ -6,3 +26,17 @@ yum install php php-bcmath php-cli php-common php-fpm php-gd php-ldap php-mbstri
 
 systemctl restart httpd.service
 systemctl is-enabled php-fpm
+
+# Config Check - Compare old php files to the new ones.
+diff /etc/php.ini /etc/php.ini.date
+diff /etc/php-fpm.d/www.conf /etc/php-fpm.d/www.conf.date
+
+# proceed with the necessary configuration if there are significant differences.
+
+# Check the new php version
+php -v
+
+# You can also check in iTop by going to Power button > About iTop
+
+# List PHP modules
+php -m
