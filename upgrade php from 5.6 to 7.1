@@ -1,0 +1,8 @@
+wget http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+rpm -Uvh remi-release-7.rpm
+yum install -y yum-utils
+yum-config-manager --enable remi-php71
+yum install php php-bcmath php-cli php-common php-fpm php-gd php-ldap php-mbstring php-mcrypt php-mysqlnd php-pdo php-pear.noarch php-pecl-apcu php-pecl-jsonc php-pecl-zip php-process php-soap php-tidy php-xml
+
+systemctl restart httpd.service
+systemctl is-enabled php-fpm
